@@ -4,11 +4,15 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { RoseChartComponent } from './rose-chart/rose-chart.component';
 import {AppRoutingModule} from './app-routing.module';
+import { CustomMinardChartComponent } from './custom-minard-chart/custom-minard-chart.component';
+import { MinardChartComponent } from './minard-chart/minard-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoseChartComponent
+    RoseChartComponent,
+    CustomMinardChartComponent,
+    MinardChartComponent
   ],
   imports: [
     BrowserModule,

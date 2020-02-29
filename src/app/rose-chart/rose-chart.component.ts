@@ -13,75 +13,114 @@ export class RoseChartComponent implements OnInit  {
   }
 
   makePlot() {
-    const data = [{
-      r: [788,
-        503,
-        844,
-        1725,
-        1861,
-        1820,
-        1205,
-        477,
-        508,
-        802,
-        382,
-        483],
-      theta: ['Apr 1854',
-        'May 1854',
-        'Jun 1854',
-        'Jul 1854',
-        'Aug 1854',
-        'Sep 1854',
-        'Oct 1854',
-        'Nov 1854',
-        'Dec 1854',
-        'Jan 1855',
-        'Feb 1855',
-        'Mar 1855'],
-      name: 'Zymotic diseases',
-      marker: {
-        color: 'rgb(230,117,113)',
-        line: {
-          color: 'rgb(0,0,0)',
-          width: 1
-        }
+    const data = [
+      {
+        r: [170,
+          128,
+          106,
+          131,
+          324,
+          361,
+          172,
+          157,
+          137,
+          131,
+          133,
+          125],
+        theta: ['Apr 1854',
+          'May 1854',
+          'Jun 1854',
+          'Jul 1854',
+          'Aug 1854',
+          'Sep 1854',
+          'Oct 1854',
+          'Nov 1854',
+          'Dec 1854',
+          'Jan 1855',
+          'Feb 1855',
+          'Mar 1855'],
+        name: 'All other causes',
+        marker: {
+          color: 'rgb(127,239,170)',
+          line: {
+            color: 'rgb(0,0,0)',
+            width: 1
+          }
+        },
+        type: 'barpolar'
       },
-      type: 'barpolar'
-    }, {
-      r: [81,
-        132,
-        287,
-        114,
-        183,
-        142,
-        232,
-        248,
-        249,
-        209,
-        134,
-        164],
-      theta: ['Apr 1854',
-        'May 1854',
-        'Jun 1854',
-        'Jul 1854',
-        'Aug 1854',
-        'Sep 1854',
-        'Oct 1854',
-        'Nov 1854',
-        'Dec 1854',
-        'Jan 1855',
-        'Feb 1855',
-        'Mar 1855'],
-      name: 'Wounds & injuries',
-      marker: {
-        color: 'rgba(138,183,255,0.64)',
-        line: {
-          color: 'rgb(0,0,0)',
-          width: 1
-        }
+      {
+        r: [788,
+          503,
+          844,
+          1225,
+          1361,
+          1320,
+          1205,
+          477,
+          508,
+          802,
+          382,
+          483],
+        theta: ['Apr 1854',
+          'May 1854',
+          'Jun 1854',
+          'Jul 1854',
+          'Aug 1854',
+          'Sep 1854',
+          'Oct 1854',
+          'Nov 1854',
+          'Dec 1854',
+          'Jan 1855',
+          'Feb 1855',
+          'Mar 1855'],
+        name: 'Zymotic diseases',
+        marker: {
+          color: 'rgb(230,117,113)',
+          line: {
+            color: 'rgb(0,0,0)',
+            width: 1
+          }
+        },
+        type: 'barpolar'
       },
-      type: 'barpolar'
-    }, {
+      {
+        r: [81,
+          132,
+          287,
+          114,
+          183,
+          142,
+          232,
+          248,
+          249,
+          209,
+          134,
+          164],
+        theta: ['Apr 1854',
+          'May 1854',
+          'Jun 1854',
+          'Jul 1854',
+          'Aug 1854',
+          'Sep 1854',
+          'Oct 1854',
+          'Nov 1854',
+          'Dec 1854',
+          'Jan 1855',
+          'Feb 1855',
+          'Mar 1855'],
+        name: 'Wounds & injuries',
+        marker: {
+          color: 'rgba(138,183,255,0.64)',
+          line: {
+            color: 'rgb(0,0,0)',
+            width: 1
+          }
+        },
+        type: 'barpolar'
+      }];
+    const zoomedData = [
+      {
       r: [170,
         128,
         106,
@@ -115,110 +154,77 @@ export class RoseChartComponent implements OnInit  {
         }
       },
       type: 'barpolar'
-    }];
-    const zoomedData = [{
-      r: [788,
-        503,
-        844,
-        1225,
-        1361,
-        1320,
-        1205,
-        477,
-        508,
-        802,
-        382,
-        483],
-      theta: ['Apr 1854',
-        'May 1854',
-        'Jun 1854',
-        'Jul 1854',
-        'Aug 1854',
-        'Sep 1854',
-        'Oct 1854',
-        'Nov 1854',
-        'Dec 1854',
-        'Jan 1855',
-        'Feb 1855',
-        'Mar 1855'],
-      name: 'Zymotic diseases',
-      marker: {
-        color: 'rgb(230,117,113)',
-        line: {
-          color: 'rgb(0,0,0)',
-          width: 1
-        }
+    },
+      {
+        r: [788,
+          503,
+          844,
+          1225,
+          1361,
+          1320,
+          1205,
+          477,
+          508,
+          802,
+          382,
+          483],
+        theta: ['Apr 1854',
+          'May 1854',
+          'Jun 1854',
+          'Jul 1854',
+          'Aug 1854',
+          'Sep 1854',
+          'Oct 1854',
+          'Nov 1854',
+          'Dec 1854',
+          'Jan 1855',
+          'Feb 1855',
+          'Mar 1855'],
+        name: 'Zymotic diseases',
+        marker: {
+          color: 'rgb(230,117,113)',
+          line: {
+            color: 'rgb(0,0,0)',
+            width: 1
+          }
+        },
+        type: 'barpolar'
       },
-      type: 'barpolar'
-    }, {
-      r: [81,
-        132,
-        287,
-        114,
-        183,
-        142,
-        232,
-        248,
-        249,
-        209,
-        134,
-        164],
-      theta: ['Apr 1854',
-        'May 1854',
-        'Jun 1854',
-        'Jul 1854',
-        'Aug 1854',
-        'Sep 1854',
-        'Oct 1854',
-        'Nov 1854',
-        'Dec 1854',
-        'Jan 1855',
-        'Feb 1855',
-        'Mar 1855'],
-      name: 'Wounds & injuries',
-      marker: {
-        color: 'rgba(138,183,255,0.64)',
-        line: {
-          color: 'rgb(0,0,0)',
-          width: 1
-        }
-      },
-      type: 'barpolar'
-    }, {
-      r: [170,
-        128,
-        106,
-        131,
-        324,
-        361,
-        172,
-        157,
-        137,
-        131,
-        133,
-        125],
-      theta: ['Apr 1854',
-        'May 1854',
-        'Jun 1854',
-        'Jul 1854',
-        'Aug 1854',
-        'Sep 1854',
-        'Oct 1854',
-        'Nov 1854',
-        'Dec 1854',
-        'Jan 1855',
-        'Feb 1855',
-        'Mar 1855'],
-      name: 'All other causes',
-      marker: {
-        color: 'rgb(127,239,170)',
-        line: {
-          color: 'rgb(0,0,0)',
-          width: 1
-        }
-      },
-      type: 'barpolar'
-    }];
+      {
+        r: [81,
+          132,
+          287,
+          114,
+          183,
+          142,
+          232,
+          248,
+          249,
+          209,
+          134,
+          164],
+        theta: ['Apr 1854',
+          'May 1854',
+          'Jun 1854',
+          'Jul 1854',
+          'Aug 1854',
+          'Sep 1854',
+          'Oct 1854',
+          'Nov 1854',
+          'Dec 1854',
+          'Jan 1855',
+          'Feb 1855',
+          'Mar 1855'],
+        name: 'Wounds & injuries',
+        marker: {
+          color: 'rgba(138,183,255,0.64)',
+          line: {
+            color: 'rgb(0,0,0)',
+            width: 1
+          }
+        },
+        type: 'barpolar'
+      }];
     const layout = {
       title: '',
       font: {size: 16},
