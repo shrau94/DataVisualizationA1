@@ -7,7 +7,6 @@ import * as Plotly from 'plotly.js/dist/plotly';
   styleUrls: ['./rose-chart.component.css']
 })
 export class RoseChartComponent implements OnInit  {
-  private myPlot;
 
   ngOnInit() {
     this.makePlot();
@@ -28,8 +27,7 @@ export class RoseChartComponent implements OnInit  {
           508,
           802,
           382,
-          483,
-          189],
+          483],
         theta: ['Sep 1854',
           'Oct 1854',
           'Nov 1854',
@@ -41,8 +39,7 @@ export class RoseChartComponent implements OnInit  {
           'May 1855',
           'Jun 1855',
           'Jul 1855',
-          'Aug 1855',
-          'Sep 1855'],
+          'Aug 1855'],
         name: 'Zymotic diseases',
         title: 'value',
         marker: {
@@ -53,7 +50,7 @@ export class RoseChartComponent implements OnInit  {
           }
         },
         type: 'barpolar',
-        hoverinfo: 'r'
+        hoverinfo: 'text'
       },
       {
         r: [81,
@@ -67,8 +64,7 @@ export class RoseChartComponent implements OnInit  {
           49,
           209,
           134,
-          164,
-          276],
+          164],
         theta: ['Sep 1854',
           'Oct 1854',
           'Nov 1854',
@@ -80,8 +76,7 @@ export class RoseChartComponent implements OnInit  {
           'May 1855',
           'Jun 1855',
           'Jul 1855',
-          'Aug 1855',
-          'Sep 1855'],
+          'Aug 1855'],
         name: 'Wounds & injuries',
         marker: {
           color: 'rgb(230,117,113)',
@@ -92,7 +87,7 @@ export class RoseChartComponent implements OnInit  {
         },
         mode: 'markers',
         type: 'barpolar',
-        hoverinfo: 'r'
+        hoverinfo: 'text'
       },
       {
         r: [70,
@@ -106,8 +101,7 @@ export class RoseChartComponent implements OnInit  {
           37,
           31,
           33,
-          25,
-          20],
+          25],
         theta: ['Sep 1854',
           'Oct 1854',
           'Nov 1854',
@@ -119,8 +113,7 @@ export class RoseChartComponent implements OnInit  {
           'May 1855',
           'Jun 1855',
           'Jul 1855',
-          'Aug 1855',
-          'Sep 1855'],
+          'Aug 1855'],
         name: 'All other causes',
         marker: {
           color: 'rgba(138,183,255,0.64)',
@@ -130,7 +123,7 @@ export class RoseChartComponent implements OnInit  {
           }
         },
         type: 'barpolar',
-        hoverinfo: 'r'
+        hoverinfo: 'text'
       }];
 
     // Assigning the layout to the rose chart
@@ -141,6 +134,7 @@ export class RoseChartComponent implements OnInit  {
       height: 450,
       showlegend: false,
       legend: {font: {size: 16}},
+      hovermode: 'closest',
       polar: {
         barmode: 'stack',
         bargap: 0,
@@ -189,6 +183,34 @@ export class RoseChartComponent implements OnInit  {
     Plotly.newPlot('zoomedRoseChart', data, zoomedLayout, config).then(function () {
     });
 
+    const myPlot: any = document.getElementById('roseChart');
+    const myPlot1: any = document.getElementById('zoomedRoseChart');
+    const hoverInfo = document.getElementById('hoverInfo');
+
+    // tslint:disable-next-line:no-shadowed-variable
+    myPlot.on('plotly_hover', function(data) {
+      const infotext = data.points.map(function(d) {
+        return (d.data.name + ': Deaths = ' + d.r);
+      });
+
+      hoverInfo.innerHTML = infotext.join('<br/>');
+    })
+    // tslint:disable-next-line:no-shadowed-variable
+      .on('plotly_unhover', function(data){
+        hoverInfo.innerHTML = '';
+      });
+
+    myPlot1.on('plotly_hover', function(data) {
+      const infotext = data.points.map(function(d) {
+        return (d.data.name + ': Deaths = ' + d.r);
+      });
+
+      hoverInfo.innerHTML = infotext.join('<br/>');
+    })
+    // tslint:disable-next-line:no-shadowed-variable
+      .on('plotly_unhover', function(data){
+        hoverInfo.innerHTML = '';
+      });
   }
 
   onResize(event) {
