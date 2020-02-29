@@ -517,7 +517,7 @@ export class MinardChartComponent implements OnInit {
         'DAY': 7
       }
     ];
-
+    let color = '';
     const data = [];
     let i = 0;
     for (i = 0; i < troop_data.length - 1; i++) {
@@ -525,22 +525,40 @@ export class MinardChartComponent implements OnInit {
       if (troop_data[i].DIV === troop_data[i + 1].DIV) {
         trace['x'] = [troop_data[i].LONP, troop_data[i + 1].LONP];
         trace['y'] = [troop_data[i].LATP, troop_data[i + 1].LATP];
+        if (troop_data[i].DIV === 1) {
+          color = troop_data[i].DIR === 'A' ? 'rgb(255, 183, 178)' : 'rgb(255, 218, 193)';
+        } else if (troop_data[i].DIV === 2) {
+          color = troop_data[i].DIR === 'A' ? 'rgb(181, 234, 215)' : 'rgb(226, 240, 203)';
+        } else if (troop_data[i].DIV === 3) {
+          color = troop_data[i].DIR === 'A' ? 'rgb(218, 191, 222)' : 'rgb(255, 220, 244)';
+        }
         trace['line'] = {
-          'color': troop_data[i].DIR === 'A' ? 'rgb(230,196,132)' : 'rgb(122,122,122)',
-          'width': (troop_data[i].SURV / 10000 * 2),
+          'color': color,
+          'width': (troop_data[i].SURV * 0.00025),
           'shape': 'spline'
         };
-        trace['mode'] = 'lines+text';
+        trace['mode'] = 'lines';
         trace['scatter'] = 'scatter';
         trace['hoverinfo'] = 'none';
-        if (i === 0) {
+        trace['showlegend'] = false;
+        if (i === 0 && troop_data[i].DIV === 1) {
           trace['showlegend'] = true;
-          trace['name'] = 'Troops Advancing (width shows the survivor counts)';
-        } else if (i === troop_data.length - 2) {
+          trace['name'] = 'Troop1 Advancing';
+        } else if (i === 17) {
           trace['showlegend'] = true;
-          trace['name'] = 'Troops Returning (width shows the survivor counts)';
-        } else {
-          trace['showlegend'] = false;
+          trace['name'] = 'Troop1 Returning';
+        } else if (i === 28) {
+          trace['showlegend'] = true;
+          trace['name'] = 'Troop2 Advancing';
+        }  else if (i === 33) {
+          trace['showlegend'] = true;
+          trace['name'] = 'Troop2 Returning';
+        } else if (i === 44) {
+          trace['showlegend'] = true;
+          trace['name'] = 'Troop3 Advancing';
+        } else if (i === 45) {
+          trace['showlegend'] = true;
+          trace['name'] = 'Troop3 Returning';
         }
         data.push(trace);
       }
@@ -705,7 +723,7 @@ export class MinardChartComponent implements OnInit {
       },
       'smith': false,
       'title': 'CHARLES JOSEPH MINARD’S MAP OF NAPOLEON’S RUSSIA CAMPAIGN',
-      'width': 1200,
+      'width': 1400,
       'xaxis': {
         'type': 'linear',
         'dtick': 50,
@@ -875,7 +893,7 @@ export class MinardChartComponent implements OnInit {
       },
       'bargap': 0.2,
       'boxgap': 0.3,
-      'height': 650,
+      'height': 720,
       'legend': {
         'orientation': 'h',
         'font': {
@@ -918,7 +936,9 @@ export class MinardChartComponent implements OnInit {
       'paper_bgcolor': '#fff'
     };
     let config = {};
-    config = {showSendToCloud: true};
+    config = {showSendToCloud: true,
+      displayModeBar: false
+    };
     Plotly.newPlot('myDiv', data, layout, config);
   }
 

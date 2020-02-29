@@ -1099,7 +1099,7 @@ export class CustomMinardChartComponent implements OnInit {
       },
       'bargap': 0.2,
       'boxgap': 0.3,
-      'height': 650,
+      'height': 720,
       'legend': {
         'orientation': 'h',
         'font': {
@@ -1149,7 +1149,9 @@ export class CustomMinardChartComponent implements OnInit {
       'paper_bgcolor': '#ffffff'
     };
     let config = {};
-    config = {showSendToCloud: true};
+    config = {showSendToCloud: true,
+      displayModeBar: false
+    };
     Plotly.newPlot('myDiv', frames[0].data, layout, config).then(function () {
       Plotly.addFrames('myDiv', frames);
     });

@@ -263,9 +263,13 @@ export class RoseChartComponent implements OnInit  {
           showline: false}
       }
     };
-    Plotly.newPlot('roseChart', data, layout).then(function () {
+    let config = {};
+    config = {showSendToCloud: true,
+      displayModeBar: false
+    };
+    Plotly.newPlot('roseChart', data, layout, config).then(function () {
     });
-    Plotly.newPlot('zoomedRoseChart', zoomedData, zoomedLayout).then(function () {
+    Plotly.newPlot('zoomedRoseChart', zoomedData, zoomedLayout, config).then(function () {
     });
   }
 
