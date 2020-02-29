@@ -43,9 +43,9 @@ export class RoseChartComponent implements OnInit  {
         name: 'Zymotic diseases',
         title: 'value',
         marker: {
-          color: 'rgb(127,239,170)',
+          color: 'rgb(181, 234, 215)',
           line: {
-            color: 'rgb(0,0,0)',
+            color: 'rgb(71,71,71)',
             width: 1
           }
         },
@@ -79,9 +79,9 @@ export class RoseChartComponent implements OnInit  {
           'Aug 1855'],
         name: 'Wounds & injuries',
         marker: {
-          color: 'rgb(230,117,113)',
+          color: 'rgb(255, 183, 178)',
           line: {
-            color: 'rgb(0,0,0)',
+            color: 'rgb(71,71,71)',
             width: 1
           }
         },
@@ -116,9 +116,9 @@ export class RoseChartComponent implements OnInit  {
           'Aug 1855'],
         name: 'All other causes',
         marker: {
-          color: 'rgba(138,183,255,0.64)',
+          color: 'rgb(199, 206, 234)',
           line: {
-            color: 'rgb(0,0,0)',
+            color: 'rgb(71,71,71)',
             width: 1
           }
         },
@@ -190,7 +190,7 @@ export class RoseChartComponent implements OnInit  {
     // tslint:disable-next-line:no-shadowed-variable
     myPlot.on('plotly_hover', function(data) {
       const infotext = data.points.map(function(d) {
-        return (d.data.name + ': Deaths = ' + d.r);
+        return (d.theta + '<br/>' + d.data.name + ': Deaths = ' + d.r);
       });
 
       hoverInfo.innerHTML = infotext.join('<br/>');
@@ -200,9 +200,10 @@ export class RoseChartComponent implements OnInit  {
         hoverInfo.innerHTML = '';
       });
 
+    // tslint:disable-next-line:no-shadowed-variable
     myPlot1.on('plotly_hover', function(data) {
       const infotext = data.points.map(function(d) {
-        return (d.data.name + ': Deaths = ' + d.r);
+        return (d.theta + '<br/>' + d.data.name + ': Deaths = ' + d.r);
       });
 
       hoverInfo.innerHTML = infotext.join('<br/>');
