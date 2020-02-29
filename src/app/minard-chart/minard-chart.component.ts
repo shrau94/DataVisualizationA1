@@ -12,6 +12,8 @@ export class MinardChartComponent implements OnInit {
   }
 
   makePlot() {
+
+    // Initializing all the data
     const troop_data = [
       {
         'LONP': 24,
@@ -517,6 +519,8 @@ export class MinardChartComponent implements OnInit {
         'DAY': 7
       }
     ];
+
+    // Assigning the width and colors to the troop lines
     let color = '';
     const data = [];
     let i = 0;
@@ -564,6 +568,7 @@ export class MinardChartComponent implements OnInit {
       }
     }
 
+    // Plotting the temperature trace
     const xdata = [], ydata = [], texts = [];
     for (i = 0; i < temp_data.length; i++) {
       xdata.push(temp_data[i].LONT);
@@ -593,6 +598,7 @@ export class MinardChartComponent implements OnInit {
     };
     data.push(trace7);
 
+    // Plotting the Cities
     const annotations = [];
     for (i = 0; i < city_data.length; i++) {
       const annotation = {
@@ -626,6 +632,7 @@ export class MinardChartComponent implements OnInit {
       annotations.push(annotation);
     }
 
+    // Plotting the Troop start points
     annotations.push({
       'x': 24,
       'y': 54.9,
@@ -654,7 +661,6 @@ export class MinardChartComponent implements OnInit {
       'bordercolor': '',
       'borderwidth': 1
     });
-
     annotations.push({
       'x': 24,
       'y': 55.2,
@@ -683,7 +689,6 @@ export class MinardChartComponent implements OnInit {
       'bordercolor': '',
       'borderwidth': 1
     });
-
     annotations.push({
       'x': 24,
       'y': 55.1,
@@ -714,6 +719,7 @@ export class MinardChartComponent implements OnInit {
     });
 
 
+    // Setting the layout of the plot
     let layout = {};
     layout = {
       'font': {
@@ -935,6 +941,8 @@ export class MinardChartComponent implements OnInit {
       'plot_bgcolor': 'rgba(255,255,255,0)',
       'paper_bgcolor': '#fff'
     };
+
+    // Defining the Config of the plot
     let config = {};
     config = {showSendToCloud: true,
       displayModeBar: false

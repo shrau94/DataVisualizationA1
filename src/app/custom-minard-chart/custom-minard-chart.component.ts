@@ -13,6 +13,7 @@ export class CustomMinardChartComponent implements OnInit {
 
 
   makePlot() {
+    // Initializing Data
     const troop_data = [
       {
         'LONP': 24,
@@ -519,6 +520,7 @@ export class CustomMinardChartComponent implements OnInit {
       }
     ];
 
+    // Assigning bubbles to chart as per the number of survivors
     let i = 0;
     const data1A = [], data1R = [];
     const data2A = [], data2R = [];
@@ -538,6 +540,7 @@ export class CustomMinardChartComponent implements OnInit {
     data2A.push(0);
     data3A.push(0);
 
+    // Ploting the traces of the troops
     const trace1 = {
       x: [24,
         24.5,
@@ -821,34 +824,8 @@ export class CustomMinardChartComponent implements OnInit {
 
 
     const data = [];
-    let texts = [];
-    for (i = 0; i < troop_data.length - 1; i++) {
-      const trace = {};
-      texts.push('' + troop_data[i].SURV);
-      if (troop_data[i].DIV === troop_data[i + 1].DIV) {
-        trace['x'] = [troop_data[i].LONP, troop_data[i + 1].LONP];
-        trace['y'] = [troop_data[i].LATP, troop_data[i + 1].LATP];
-        trace['line'] = {
-          'color': troop_data[i].DIR === 'A' ? 'rgb(230,196,132)' : 'rgb(122,122,122)',
-          'width': troop_data[i].SURV / 10000,
-          'shape': 'spline'
-        };
-        trace['mode'] = 'lines+text';
-        trace['scatter'] = 'scatter';
-        trace['hoverinfo'] = 'none';
-        trace['showlegend'] = false;
-        if (troop_data[i].DIV === 1) {
-          troop_data[i].DIR === 'A' ? data1A.push(trace) : data1R.push(trace);
-        } else if (troop_data[i].DIV === 2) {
-          troop_data[i].DIR === 'A' ? data2A.push(trace) : data2R.push(trace);
-        } else {
-          troop_data[i].DIR === 'A' ? data3A.push(trace) : data3R.push(trace);
-        }
-      }
-    }
-
     const xdata = [], ydata = [];
-    texts = [];
+    const texts = [];
     for (i = 0; i < temp_data.length; i++) {
       xdata.push(temp_data[i].LONT);
       ydata.push(temp_data[i].TEMP);
@@ -920,6 +897,8 @@ export class CustomMinardChartComponent implements OnInit {
       };
       annotations.push(annotation);
     }
+
+    // Defing the layout of the chart
     let layout = {};
     layout = {
       'font': {
@@ -1148,6 +1127,8 @@ export class CustomMinardChartComponent implements OnInit {
       'plot_bgcolor': '#ffffff',
       'paper_bgcolor': '#ffffff'
     };
+
+    // Defining the config of chart
     let config = {};
     config = {showSendToCloud: true,
       displayModeBar: false
